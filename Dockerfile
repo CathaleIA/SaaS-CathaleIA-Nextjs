@@ -67,8 +67,7 @@ WORKDIR /home/ec2-user/app
 COPY . .
 
 # 10. Permisos finales
-RUN sudo chmod +x deployment.sh && \
-    sudo chown -R ec2-user:ec2-user /home/ec2-user/app
+RUN sudo chown -R ec2-user:ec2-user /home/ec2-user/app
 
 ENV PATH="/home/ec2-user/.local/bin:/home/ec2-user/.nvm/versions/node/v14.18.1/bin:${PATH}"
 
