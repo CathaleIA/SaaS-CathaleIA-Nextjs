@@ -63,16 +63,16 @@ if [[ $server -eq 1 ]]; then
       exit 1
     fi
     # Updating all labs samconfig.toml with new bucket name
-    ex -sc '%s/s3_bucket = .*/s3_bucket = \"'$SAM_S3_BUCKET'\"/|x' samconfig.toml
-    ex -sc '%s/s3_bucket = .*/s3_bucket = \"'$SAM_S3_BUCKET'\"/|x' ../../Lab3/server/shared-samconfig.toml
-    ex -sc '%s/s3_bucket = .*/s3_bucket = \"'$SAM_S3_BUCKET'\"/|x' ../../Lab3/server/tenant-samconfig.toml
-    ex -sc '%s/s3_bucket = .*/s3_bucket = \"'$SAM_S3_BUCKET'\"/|x' ../../Lab4/server/shared-samconfig.toml
-    ex -sc '%s/s3_bucket = .*/s3_bucket = \"'$SAM_S3_BUCKET'\"/|x' ../../Lab4/server/tenant-samconfig.toml
-    ex -sc '%s/s3_bucket = .*/s3_bucket = \"'$SAM_S3_BUCKET'\"/|x' ../../Lab5/server/shared-samconfig.toml
-    ex -sc '%s/s3_bucket = .*/s3_bucket = \"'$SAM_S3_BUCKET'\"/|x' ../../Lab5/server/tenant-samconfig.toml
-    ex -sc '%s/s3_bucket = .*/s3_bucket = \"'$SAM_S3_BUCKET'\"/|x' ../../Lab6/server/shared-samconfig.toml
-    ex -sc '%s/s3_bucket = .*/s3_bucket = \"'$SAM_S3_BUCKET'\"/|x' ../../Lab6/server/tenant-samconfig.toml
-    ex -sc '%s/s3_bucket = .*/s3_bucket = \"'$SAM_S3_BUCKET'\"/|x' ../../Lab7/samconfig.toml
+    sed -i "s/s3_bucket = .*/s3_bucket = \"$SAM_S3_BUCKET\"/" samconfig.toml
+    sed -i "s/s3_bucket = .*/s3_bucket = \"$SAM_S3_BUCKET\"/" ../../Lab3/server/shared-samconfig.toml
+    sed -i "s/s3_bucket = .*/s3_bucket = \"$SAM_S3_BUCKET\"/" ../../Lab3/server/tenant-samconfig.toml
+    sed -i "s/s3_bucket = .*/s3_bucket = \"$SAM_S3_BUCKET\"/" ../../Lab4/server/shared-samconfig.toml
+    sed -i "s/s3_bucket = .*/s3_bucket = \"$SAM_S3_BUCKET\"/" ../../Lab4/server/tenant-samconfig.toml
+    sed -i "s/s3_bucket = .*/s3_bucket = \"$SAM_S3_BUCKET\"/" ../../Lab5/server/shared-samconfig.toml
+    sed -i "s/s3_bucket = .*/s3_bucket = \"$SAM_S3_BUCKET\"/" ../../Lab5/server/tenant-samconfig.toml
+    sed -i "s/s3_bucket = .*/s3_bucket = \"$SAM_S3_BUCKET\"/" ../../Lab6/server/shared-samconfig.toml
+    sed -i "s/s3_bucket = .*/s3_bucket = \"$SAM_S3_BUCKET\"/" ../../Lab6/server/tenant-samconfig.toml
+    sed -i "s/s3_bucket = .*/s3_bucket = \"$SAM_S3_BUCKET\"/" ../../Lab7/samconfig.toml
   fi
 
   echo "Validating server code using pylint"
