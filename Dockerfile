@@ -1,22 +1,21 @@
 FROM amazonlinux:2
 
-# 1. Instalar paquetes necesarios para useradd y sudo
-RUN yum install -y shadow-utils sudo && \
-    useradd -m ec2-user && \
-    echo 'ec2-user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-
-# 1. Instalar herramientas base
+# 1. Instalar herramientas base y paquetes necesarios
 RUN yum update -y && \
-    yum install -y git unzip curl wget tar gzip findutils amazon-linux-extras && \
+    yum install -y shadow-utils sudo git unzip curl wget tar gzip findutils amazon-linux-extras && \
     yum clean all
 
-# 2. Instalar Python 3.8
+# 2. Crear usuario ec2-user y configurar sudo
+RUN useradd -m ec2-user && \
+    echo 'ec2-user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+# 3. Instalar Python 3.8 y pip3
 RUN amazon-linux-extras enable python3.8 && \
-    yum install -y python3.8 && \
+    yum install -y python3.8 python3-pip && \  # <-- Añadir python3-pip
     alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && \
     alternatives --set python3 /usr/bin/python3.8
 
-# 3. Instalar AWS CLI v2.3.0
+# 4. Instalar AWS CLI v2.3.0 (ahora pip3 está disponible)
 RUN pip3 uninstall awscli -y && \
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.3.0.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \
