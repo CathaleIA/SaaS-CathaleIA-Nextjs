@@ -63,10 +63,8 @@ USER ec2-user
 WORKDIR /home/ec2-user/app
 
 # Copiar estructura específica
-COPY ./scripts/deployment.sh .
-COPY ./server ./server
-COPY ./client ./client
-COPY ./scripts ./scripts
+# 9. Configurar entorno
+COPY . .
 
 # 10. Permisos finales
 RUN sudo chmod +x deployment.sh && \
