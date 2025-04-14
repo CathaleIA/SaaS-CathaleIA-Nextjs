@@ -2,7 +2,7 @@ FROM amazonlinux:2023
 
 # 1. Herramientas base (compatible con el script original)
 RUN dnf update -y && \
-    dnf install -y \
+    dnf install -y --allowerasing \
     git unzip curl wget tar gzip findutils && \
     dnf clean all
 
