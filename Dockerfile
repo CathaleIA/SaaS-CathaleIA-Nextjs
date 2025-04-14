@@ -62,10 +62,9 @@ RUN yum install -y jq-1.5 && \
 # 9. Configurar entorno de trabajo
 USER ec2-user
 WORKDIR /home/ec2-user/app
-COPY deployment.sh .
-COPY server/ server/
-COPY client/ client/
-COPY scripts/ scripts/
+
+# Copiar TODOS los archivos del contexto de construcción
+COPY . .
 
 # 10. Permisos y limpieza final
 RUN sudo chmod +x deployment.sh && \
