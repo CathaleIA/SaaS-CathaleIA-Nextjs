@@ -1,0 +1,263 @@
+{
+    "header": {
+      "title": "CATHALEIA",
+      "nav": [
+        {
+          "id": "features",
+          "title": "Features"
+        },
+        {
+          "id": "dashboard",
+          "title": "Dashboard"
+        },
+        {
+          "id": "integrations",
+          "title": "Integrations"
+        },
+        {
+          "id": "security",
+          "title": "Security"
+        },
+        {
+            "id": "testimonials",
+            "title": "Testimonials"
+        },
+        {
+            "id": "pricing",
+            "title": "Pricing"
+        }
+      ],
+
+      "buttons": {
+        "login": "Log in",
+        "signup": "Sign up"
+      }
+    },
+    "hero": {
+      "title": "Turn Data into Powerful Decisions",
+      "description": "Collect, analyze, and visualize your customers' information in real time. Make smart decisions, manage projects efficiently, and take your team to the next level.",
+      "buttons": {
+        "getStarted": "Get Started",
+        "demo": "Book a Demo"
+      }
+    },
+    "features": {
+      "head": "Features",
+        "title": "Centralize and Transform Your Data",
+        "description": "Our platform collects and organizes operational and administrative data from your business, providing you with a clear and actionable view through an intuitive dashboard.",
+        "items": [
+          {
+            "title": "Data Collection",
+            "description": "Automatically capture operational and administrative data from multiple sources, ensuring all relevant information is always up-to-date and accessible."
+          },
+          {
+            "title": "Dashboard Visualization",
+            "description": "Access a customizable dashboard that displays your key data in real-time, enabling informed decision-making."
+          },
+          {
+            "title": "Report Management",
+            "description": "Generate and manage detailed reports with just a few clicks, allowing you to analyze performance and share insights with your team."
+          },
+          {
+            "title": "Data Analysis (Coming Soon)",
+            "description": "Coming soon, we will integrate advanced data analysis tools to help you uncover trends, patterns, and opportunities for improvement in your operations."
+          }
+        ]
+    },
+    "dashboard": {
+        "head": "Dashboard",
+      "title": "Powerful Analytics at Your Fingertips",
+      "description": "Transform your data into actionable insights with our intuitive dashboards and visualization tools.",
+      "tabs": [ 
+        {
+            "title": "Analytics",
+            "value" :"analytics",
+            "title2": "Real-time Analytics Dashboard",
+            "description": "Monitor key metrics in real-time with customizable widgets, interactive charts, and filtering options.",
+            "keys": ["Interactive Charts", "Custom Metrics", "Real-time Updates", "Data Filtering"]
+        },
+        {
+            "title": "Reports",
+            "value" :"reports",
+            "title2": "Automated Reporting System",
+            "description": "Schedule and automate reports with customizable templates, export options, and sharing capabilities.",
+            "keys": ["Scheduled Reports", "Multiple Formats", "Sharing Options", "Custom Templates"]
+        },
+        {
+            "title": "Data Management",
+            "value" :"management",
+            "title2": "Centralized Data Management",
+            "description": "Import, clean, and organize your data from multiple sources in one secure platform.",
+            "keys": ["Data Import/Export", "Data Cleaning", "Version Control", "Access Management"]
+        },
+        {
+            "title": "Prévisions",
+            "value" :"previsions",
+            "title2": "Predictive Analytics & Forecasting (Coming Soon)",
+            "description": "Leverage AI-powered forecasting to predict trends and make data-driven decisions.",
+            "keys": ["Trend Analysis", "Predictive Models", "What-If Scenarios", "Anomaly Detection"]
+        }
+      ],
+      "demo": {
+        "watch": "Watch Demo",
+        "try": "Try Live Demo"
+      }
+    },
+    "integrations": {
+      "head": "Integrations",
+      "title": "Connect With Your Favorite Tools",
+      "description": "CathaleIA seamlessly integrates with your existing tech stack to centralize your data and CathaleIA your workflow.",
+      "api": {
+        "title": "API & Custom Integrations",
+        "description": "Need a custom integration? Our robust API and developer tools make it easy to connect CathaleIA with any system.",
+        "features": [
+          "RESTful API with comprehensive documentation",
+          "Webhook support for real-time data updates",
+          "Custom connector development",
+          "Secure authentication methods",
+          "Data transformation capabilities"
+        ]
+      },
+      "process": {
+        "title": "Integration Process",
+        "steps": [
+          {
+            "title": "Select Your Integration",
+            "description": "Choose from our library of pre-built connectors or use our API."
+          },
+          {
+            "title": "Authenticate & Configure",
+            "description": "Securely connect your accounts with OAuth or API keys."
+          },
+          {
+            "title": "Map Your Data",
+            "description": "Define how data should flow between systems."
+          },
+          {
+            "title": "Test & Deploy",
+            "description": "Verify everything works correctly and activate your integration."
+          }
+        ]
+      }
+    },
+    "security": {
+      "head":"Security",
+      "title": "Enterprise-Grade Security for Your Data",
+      "description": "We take data security seriously. Your information is protected with industry-leading security measures and compliance standards.",
+      "features": [
+        {
+          "title": "Data Encryption",
+          "description": "All data is encrypted at rest and in transit using AES-256 and TLS 1.3 protocols."
+        },
+        {
+          "title": "Access Controls",
+          "description": "Role-based access control, MFA, and SSO integration to ensure only authorized access."
+        },
+        {
+          "title": "Compliance",
+          "description": "Compliant with GDPR, HIPAA, SOC 2 Type II, and other industry standards."
+        },
+        {
+          "title": "Secure Infrastructure",
+          "description": "Hosted on secure cloud infrastructure with regular security audits and penetration testing."
+        }
+      ],
+      "oursecurity": {
+        "title": "Our Security Commitment",
+        "description": "We implement a comprehensive security program that includes:",
+        "listsecurity": [
+            "Regular security assessments and penetration testing",
+            "24/7 infrastructure monitoring and threat detection",
+            "Strict data access policies and audit logging",
+            "Employee security training and background checks",
+            "Disaster recovery and business continuity planning",
+            "Vendor security assessment program"
+          ]
+      },
+      "finaltext": "Our compliance certifications demonstrate our commitment to maintaining the highest security standards."
+    },
+    "testimonials": {
+        "head": "Testimonials",
+        "title": "What Our Clients Say",
+        "description": "Don't just take our word for it. Here's what our clients say about our solution.",
+        "items": [
+          {
+            "quote": "Thanks to this platform, we now have real-time visibility into the status of our equipment. The integration with DEIF has been key to optimizing our predictive maintenance.",
+            "author": "N/N",
+            "role": "Operations Lead, Acacias Oil Company"
+          },
+          {
+            "quote": "The ability to analyze Motul oil samples and generate reports automatically has helped us reduce machine failures by 40%. An indispensable tool.",
+            "author": "N/N",
+            "role": "Operations Supervisor, Motul Solutions"
+          },
+          {
+            "quote": "The cloud has revolutionized how we manage our data. We can now make decisions based on accurate and up-to-date information, which has improved our operational efficiency.",
+            "author": "N/N",
+            "role": "Manager of Copower LTDA"
+          }
+        ]
+      },
+    "pricing": {
+      "head":"Pricing",
+      "title": "Simple, Transparent Pricing",
+      "description": "Choose the plan that's right for your team. All plans include a 14-day free trial.",
+      "topics": ["Monthly","Yearly"],
+      "add":"Save 20%",
+      "button": "Get Started",
+      "plans": [
+        {
+          "name": "Starter",
+          "monthlyPrice": "12",
+          "description": "Perfect for small teams just getting started.",
+          "features": [
+            "Up to 5 team members",
+            "10 projects",
+            "Basic reporting",
+            "24/7 support"
+          ],
+          "popular": false
+        },
+        {
+          "name": "Professional",
+          "monthlyPrice": "29",
+          "description": "Ideal for growing teams with more complex needs.",
+          "features": [
+            "Up to 20 team members",
+            "Unlimited projects",
+            "Advanced reporting",
+            "Priority support",
+            "Custom workflows"
+          ],
+          "popular": true
+        },
+        {
+          "name": "Enterprise",
+          "monthlyPrice": "79",
+          "description": "For large organizations with advanced requirements.",
+          "features": [
+            "Unlimited team members",
+            "Unlimited projects",
+            "Custom reporting",
+            "Dedicated support",
+            "Advanced security",
+            "API access"
+          ],
+          "popular": false
+        }
+      ]
+    },
+    "cta": {
+        "title": "Ready to CathaleIA Your Workflow?",
+        "description": "Join thousands of teams already using CathaleIA to improve their productivity.",
+        "button": ["Get Started", "Contact Sales"]
+    },
+    "footer": {
+      "copyright": "© 2025 CPW|I&D. All rights reserved.",
+      "social": {
+        "twitter": "Twitter",
+        "linkedin": "LinkedIn",
+        "github": "GitHub"
+      }
+    }
+  }
