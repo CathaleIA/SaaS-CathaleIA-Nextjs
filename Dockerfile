@@ -11,7 +11,7 @@ RUN useradd -m ec2-user && \
 
 # 3. Instalar Python 3.8 y pip3
 RUN amazon-linux-extras enable python3.8 && \
-    yum install -y python3.8 python3-pip && \  # <-- Añadir python3-pip
+    yum install -y python3.8 python3-pip && \
     alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && \
     alternatives --set python3 /usr/bin/python3.8
 
