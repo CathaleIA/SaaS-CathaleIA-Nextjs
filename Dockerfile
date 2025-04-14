@@ -3,13 +3,11 @@ FROM amazonlinux:2023
 # 1. Herramientas base (compatible con el script original)
 RUN dnf update -y && \
     dnf install -y \
-    git unzip curl wget tar gzip findutils \
-    amazon-linux-extras && \
+    git unzip curl wget tar gzip findutils && \
     dnf clean all
 
 # 2. Instalar Python 3.8 (como en el script original)
-RUN amazon-linux-extras enable python3.8 && \
-    dnf install -y python3.8 && \
+RUN dnf install -y python3.8 && \
     alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && \
     alternatives --set python3 /usr/bin/python3.8
 
