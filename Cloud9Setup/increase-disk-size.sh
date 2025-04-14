@@ -4,15 +4,11 @@
 SIZE=50
 
 # Get the ID of the environment host Amazon EC2 instance.
-INSTANCEID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
-REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
+INSTANCEID="i-0780cdfaa03bcad7e"
+REGION="us-east-1"
 
 # Get the ID of the Amazon EBS volume associated with the instance.
-VOLUMEID=$(aws ec2 describe-instances \
-  --instance-id $INSTANCEID \
-  --query "Reservations[0].Instances[0].BlockDeviceMappings[0].Ebs.VolumeId" \
-  --output text \
-  --region $REGION)
+VOLUMEID="vol-03395ecf94826a803"
 
 # Resize the EBS volume.
 aws ec2 modify-volume --volume-id $VOLUMEID --size $SIZE
