@@ -34,7 +34,7 @@ Resources:
     Properties:
       LayerName: serverless-saas-dependencies
       Description: Utilities for project
-      ContentUri: ../layers/
+      ContentUri: ../layers/python/
       CompatibleRuntimes:
         - python3.9
       LicenseInfo: "MIT"
