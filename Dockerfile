@@ -1,7 +1,7 @@
 FROM public.ecr.aws/sam/build-python3.9:latest
 
-# 1. Instalar herramientas base incluyendo shadow-utils
-RUN yum update -y && \
+# 1. Instalar herramientas base incluyendo shadow-utils (forzando instalación)
+RUN yum update -y --skip-broken && \
     yum install -y \
     shadow-utils \
     sudo \
@@ -13,10 +13,11 @@ RUN yum update -y && \
     gzip \
     findutils \
     amazon-linux-extras && \
-    yum clean all
+    yum clean all && \
+    rpm -q shadow-utils  # Verificar instalación
 
-# 2. Ahora podrás crear el usuario
-RUN useradd -m -u 1000 -s /bin/bash ec2-user && \
+# 2. Crear usuario usando ruta absoluta
+RUN /usr/sbin/useradd -m -u 1000 -s /bin/bash ec2-user && \
     echo 'ec2-user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # 3. Instalar Python 3.8 y herramientas
