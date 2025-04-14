@@ -1,8 +1,8 @@
 FROM amazonlinux:2
 
-# Configurar usuario ec2-user
-RUN useradd -m ec2-user && \
-    yum install -y sudo && \
+# 1. Instalar paquetes necesarios para useradd y sudo
+RUN yum install -y shadow-utils sudo && \
+    useradd -m ec2-user && \
     echo 'ec2-user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # 1. Instalar herramientas base
