@@ -5,11 +5,12 @@ RUN dnf update -y && \
     dnf install -y --allowerasing \
     git unzip curl wget tar gzip findutils && \
     dnf clean all
-
-# 2. Instalar Python 3.8 (como en el script original)
-RUN dnf install -y python3.8 && \
-    alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && \
-    alternatives --set python3 /usr/bin/python3.8
+    
+# 2. Instalar Python 3.9
+RUN dnf install -y python3.9 && \
+    alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1 && \
+    alternatives --set python3 /usr/bin/python3.9 && \
+    pip3 install --upgrade pip
 
 # 3. AWS CLI v2.3.0 (versión específica del script)
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.3.0.zip" -o "awscliv2.zip" && \
