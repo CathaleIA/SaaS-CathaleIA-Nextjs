@@ -45,7 +45,8 @@ if [[ $server -eq 1 ]]; then
   echo "Server code is getting deployed"
 
   cd ../server || exit # stop execution if cd fails
-  REGION=$(aws configure get region)
+  # REGION=$(aws configure get region)
+  REGION=$(aws configure get region || echo "us-east-1")
   DEFAULT_SAM_S3_BUCKET=$(grep s3_bucket samconfig.toml | cut -d'=' -f2 | cut -d \" -f2)
   echo "aws s3 ls s3://$DEFAULT_SAM_S3_BUCKET"
   if ! aws s3 ls "s3://${DEFAULT_SAM_S3_BUCKET}"; then
@@ -190,23 +191,34 @@ EoF
 
   echo "Configuring environment for Landing Client"
 
-  cat <<EoF >./src/environments/environment.prod.ts
-export const environment = {
-  production: true,
-  apiGatewayUrl: '$ADMIN_APIGATEWAYURL'
-};
+#   cat <<EoF >./src/environments/environment.prod.ts
+# export const environment = {
+#   production: true,
+#   apiGatewayUrl: '$ADMIN_APIGATEWAYURL'
+# };
+# EoF
+#   cat <<EoF >./src/environments/environment.ts
+# export const environment = {
+#   production: false,
+#   apiGatewayUrl: '$ADMIN_APIGATEWAYURL'
+# };
+# EoF
+ # Crear archivo .env.production con variables necesarias
+  cat <<EoF >.env.production
+NEXT_PUBLIC_API_GATEWAY_URL="$ADMIN_APIGATEWAYURL"
+NEXT_PUBLIC_AWS_REGION="$REGION"
 EoF
-  cat <<EoF >./src/environments/environment.ts
-export const environment = {
-  production: false,
-  apiGatewayUrl: '$ADMIN_APIGATEWAYURL'
-};
+
+  # Crear archivo .env.development para uso local (opcional)
+  cat <<EoF >.env.development
+NEXT_PUBLIC_API_GATEWAY_URL="$ADMIN_APIGATEWAYURL"
+NEXT_PUBLIC_AWS_REGION="us-east-1"
 EoF
 
   npm install && npm run build
 
-  echo "aws s3 sync --delete --cache-control no-store dist s3://${LANDING_APP_SITE_BUCKET}"
-  aws s3 sync --delete --cache-control no-store dist "s3://${LANDING_APP_SITE_BUCKET}"
+  echo "aws s3 sync --delete --cache-control no-store ./out s3://${LANDING_APP_SITE_BUCKET}"
+  aws s3 sync --delete --cache-control no-store ./out "s3://${LANDING_APP_SITE_BUCKET}"
 
   if [[ $? -ne 0 ]]; then
     exit 1

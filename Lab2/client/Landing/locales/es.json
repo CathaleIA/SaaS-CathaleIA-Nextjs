@@ -1,0 +1,260 @@
+{
+    "header": {
+      "title": "CathaleIA",
+        "nav": [
+        {
+            "id": "features",
+            "title": "Características"
+        },
+        {
+            "id": "dashboard",
+            "title": "Panel"
+        },
+        {
+            "id": "integrations",
+            "title": "Integraciones"
+        },
+        {
+            "id": "security",
+            "title": "Seguridad"
+        },
+        {
+            "id": "testimonials",
+            "title": "Testimonios"
+        },
+        {
+            "id": "pricing",
+            "title": "Precios"
+        }
+        ],
+      "buttons": {
+        "login": "Iniciar sesión",
+        "signup": "Registrarse"
+      }
+    },
+    "hero": {
+      "title": "Transforma Datos en Decisiones Poderosas",
+      "description": "Recopila, analiza y visualiza la información de tus clientes en tiempo real. Toma decisiones inteligentes, gestiona proyectos eficientemente y lleva a tu equipo al siguiente nivel.",
+      "buttons": {
+        "getStarted": "Comenzar",
+        "demo": "Reservar una demostración"
+      }
+    },
+    "features": {
+      "head": "Características",
+        "title": "Centraliza y Transforma tus Datos",
+        "description": "Nuestra plataforma recopila y organiza la información operativa y administrativa de tu negocio, ofreciéndote una visión clara y accionable a través de un dashboard intuitivo.",
+        "items": [
+          {
+            "title": "Recolección de Datos",
+            "description": "Captura automáticamente datos operativos y administrativos de múltiples fuentes, asegurando que toda la información relevante esté siempre actualizada y accesible."
+          },
+          {
+            "title": "Visualización en Dashboard",
+            "description": "Accede a un panel de control personalizable que muestra tus datos clave en tiempo real, facilitando la toma de decisiones informadas."
+          },
+          {
+            "title": "Gestión de Informes",
+            "description": "Genera y gestiona informes detallados con solo unos clics, permitiéndote analizar el rendimiento y compartir insights con tu equipo."
+          },
+          {
+            "title": "Análisis de Datos (Próximamente)",
+            "description": "Próximamente, integraremos herramientas avanzadas de análisis de datos para ayudarte a descubrir tendencias, patrones y oportunidades de mejora en tu operación."
+          }
+        ]
+    },
+    "dashboard": {
+      "head": "Dashboard",
+      "title": "Análisis poderosos al alcance de tu mano",
+      "description": "Transforma tus datos en información accionable con nuestros paneles intuitivos y herramientas de visualización.",
+        "tabs": [
+        {
+            "title": "Análisis",
+            "value": "analytics",
+            "title2": "Panel de Análisis en Tiempo Real",
+            "description": "Monitorea métricas clave en tiempo real con widgets personalizables, gráficos interactivos y opciones de filtrado.",
+            "keys": ["Gráficos Interactivos", "Métricas Personalizadas", "Actualizaciones en Tiempo Real", "Filtrado de Datos"]
+        },
+        {
+            "title": "Informes",
+            "value": "reports",
+            "title2": "Sistema de Informes Automatizados",
+            "description": "Programa y automatiza informes con plantillas personalizables, opciones de exportación y capacidades de compartir.",
+            "keys": ["Informes Programados", "Múltiples Formatos", "Opciones de Compartir", "Plantillas Personalizadas"]
+        },
+        {
+            "title": "Gestión de Datos",
+            "value": "management",
+            "title2": "Gestión Centralizada de Datos",
+            "description": "Importa, limpia y organiza tus datos desde múltiples fuentes en una plataforma segura.",
+            "keys": ["Importación/Exportación de Datos", "Limpieza de Datos", "Control de Versiones", "Gestión de Accesos"]
+        },
+        {
+            "title": "Pronósticos",
+            "value": "forecasting",
+            "title2": "Análisis Predictivo y Pronósticos (Proximamente)",
+            "description": "Aprovecha la predicción basada en IA para pronosticar tendencias y tomar decisiones basadas en datos.",
+            "keys": ["Análisis de Tendencias", "Modelos Predictivos", "Escenarios de Qué Pasa Si", "Detección de Anomalías"]
+        }
+        ],
+      "demo": {
+        "watch": "Ver demostración",
+        "try": "Probar demostración en vivo"
+      }
+    },
+    "integrations": {
+      "head": "Integraciones",
+      "title": "Conéctate con tus herramientas favoritas",
+      "description": "CathaleIA se integra perfectamente con tu stack tecnológico existente para centralizar tus datos y optimizar tu flujo de trabajo.",
+      "api": {
+        "title": "API e integraciones personalizadas",
+        "description": "¿Necesitas una integración personalizada? Nuestra API robusta y herramientas para desarrolladores facilitan la conexión de CathaleIA con cualquier sistema.",
+        "features": [
+          "API RESTful con documentación completa",
+          "Soporte para webhooks para actualizaciones de datos en tiempo real",
+          "Desarrollo de conectores personalizados",
+          "Métodos de autenticación segura",
+          "Capacidades de transformación de datos"
+        ]
+      },
+      "process": {
+        "title": "Proceso de integración",
+        "steps": [
+          {
+            "title": "Selecciona tu integración",
+            "description": "Elige entre nuestra biblioteca de conectores preconstruidos o usa nuestra API."
+          },
+          {
+            "title": "Autentica y configura",
+            "description": "Conecta tus cuentas de manera segura con OAuth o claves API."
+          },
+          {
+            "title": "Mapea tus datos",
+            "description": "Define cómo deben fluir los datos entre sistemas."
+          },
+          {
+            "title": "Prueba y despliega",
+            "description": "Verifica que todo funcione correctamente y activa tu integración."
+          }
+        ]
+      }
+    },
+    "security": {
+      "head":"Seguridad",
+      "title": "Seguridad de nivel empresarial para tus datos",
+      "description": "Nos tomamos la seguridad de los datos muy en serio. Tu información está protegida con medidas de seguridad líderes en la industria y estándares de cumplimiento.",
+      "features": [
+        {
+          "title": "Cifrado de datos",
+          "description": "Todos los datos se cifran en reposo y en tránsito utilizando los protocolos AES-256 y TLS 1.3."
+        },
+        {
+          "title": "Controles de acceso",
+          "description": "Control de acceso basado en roles, MFA e integración de SSO para garantizar solo acceso autorizado."
+        },
+        {
+          "title": "Cumplimiento",
+          "description": "Cumplimiento con GDPR, HIPAA, SOC 2 Tipo II y otros estándares de la industria."
+        },
+        {
+          "title": "Infraestructura segura",
+          "description": "Alojado en una infraestructura en la nube segura con auditorías de seguridad regulares y pruebas de penetración."
+        }
+      ],
+      "oursecurity": {
+            "title": "Nuestro Compromiso con la Seguridad",
+            "description": "Implementamos un programa de seguridad integral que incluye:",
+            "listsecurity": [
+                "Evaluaciones de seguridad regulares y pruebas de penetración",
+                "Monitoreo de infraestructura 24/7 y detección de amenazas",
+                "Políticas estrictas de acceso a datos y registro de auditorías",
+                "Capacitación en seguridad para empleados y verificaciones de antecedentes",
+                "Planificación de recuperación ante desastres y continuidad del negocio",
+                "Programa de evaluación de seguridad de proveedores"
+            ]
+            },
+        "finaltext": "Nuestras certificaciones de cumplimiento demuestran nuestro compromiso con los más altos estándares de seguridad."
+    },
+    "testimonials": {
+        "head": "Testimonios",
+        "title": "Lo que dicen nuestros clientes",
+        "description": "No solo nos creas a nosotros. Esto es lo que nuestros clientes dicen sobre nuestra solución.",
+        "items": [
+        {
+            "quote": "Gracias a esta plataforma, ahora tenemos visibilidad en tiempo real del estado de nuestros equipos. La integración con DEIF ha sido clave para optimizar nuestro mantenimiento predictivo.",
+            "author": "N/N",
+            "role": "Lider de operaciones, Petrolera Acacias"
+        },
+        {
+            "quote": "La capacidad de analizar las muestras de aceite de Motul y generar informes automáticamente nos ha permitido reducir fallos en nuestras máquinas en un 40%. Una herramienta indispensable.",
+            "author": "N/N",
+            "role": "Supervisor de Operaciones, Motul Solutions"
+        },
+        {
+            "quote": "La nube ha revolucionado cómo gestionamos nuestros datos. Ahora podemos tomar decisiones basadas en información precisa y actualizada, lo que ha mejorado nuestra eficiencia operativa.",
+            "author": "N/N",
+            "role": "Gerente de Copower LTDA"
+        }
+        ]
+    },
+    "pricing": {
+      "head":"Precios",
+      "title": "Precios simples y transparentes",
+      "description": "Elige el plan que mejor se adapte a tu equipo. Todos los planes incluyen una prueba gratuita de 14 días.",
+      "topics": ["Mensual", "Anual"],
+      "add": "Ahorra 20%",
+      "button": "Comenzar",
+      "plans": [
+        {
+          "name": "Básico",
+          "monthlyPrice": "12",
+          "description": "Perfecto para equipos pequeños que recién comienzan.",
+          "features": [
+            "Hasta 5 miembros del equipo",
+            "10 proyectos",
+            "Informes básicos",
+            "Soporte 24/7"
+          ]
+        },
+        {
+          "name": "Profesional",
+          "monthlyPrice": "29",
+          "description": "Ideal para equipos en crecimiento con necesidades más complejas.",
+          "features": [
+            "Hasta 20 miembros del equipo",
+            "Proyectos ilimitados",
+            "Informes avanzados",
+            "Soporte prioritario",
+            "Flujos de trabajo personalizados"
+          ],
+          "popular": true
+        },
+        {
+          "name": "Empresarial",
+          "monthlyPrice": "79",
+          "description": "Para organizaciones grandes con requisitos avanzados.",
+          "features": [
+            "Miembros del equipo ilimitados",
+            "Proyectos ilimitados",
+            "Informes personalizados",
+            "Soporte dedicado",
+            "Seguridad avanzada",
+            "Acceso a la API"
+          ]
+        }
+      ]
+    },
+    "cta": {
+        "title": "¿Listo para optimizar tu flujo de trabajo?",
+        "description": "Únete a miles de equipos que ya usan CathaleIA para mejorar su productividad.",
+        "button": ["Comenzar", "Contactar Ventas"]
+    },
+    "footer": {
+      "copyright": "© 2025 CPW|I&D. Todos los derechos reservados.",
+      "social": {
+        "twitter": "Twitter",
+        "linkedin": "LinkedIn",
+        "github": "GitHub"
+      }
+    }
+  }
