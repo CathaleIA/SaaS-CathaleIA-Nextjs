@@ -1,6 +1,6 @@
 FROM public.ecr.aws/sam/build-python3.9:latest
 
-# 1. Instalar herramientas base
+# 1. Instalar herramientas base incluyendo shadow-utils
 RUN yum update -y && \
     yum install -y \
     shadow-utils \
@@ -15,7 +15,7 @@ RUN yum update -y && \
     amazon-linux-extras && \
     yum clean all
 
-# 2. Configurar usuario no-root
+# 2. Ahora podrás crear el usuario
 RUN useradd -m -u 1000 -s /bin/bash ec2-user && \
     echo 'ec2-user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
