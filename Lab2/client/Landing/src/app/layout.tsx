@@ -1,6 +1,6 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
-import { Inter, Poppins, Open_Sans, Montserrat } from "next/font/google";
+import { Poppins, Open_Sans, Montserrat } from "next/font/google";
 
 import "@/app/styles/globals.css";
 
