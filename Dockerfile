@@ -1,4 +1,4 @@
-FROM public.ecr.aws/amazonlinux/amazonlinux:2
+FROM public.ecr.aws/amazonlinux/amazon-linux:2023
 
 # 1. Instalar herramientas base
 RUN yum update -y && \
