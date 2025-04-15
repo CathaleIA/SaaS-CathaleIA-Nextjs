@@ -8,8 +8,6 @@ import ClientNavBar from "@/components/navbar/ClientNavBar";
 
 import { LanguageProvider } from "@/context/LanguageContext";
 
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
   weight: ["400", "600", "700"],
   subsets: ["latin"],
