@@ -152,10 +152,7 @@ NEXT_PUBLIC_AWS_REGION="$REGION"
 EoF
 
   # Construir con Docker (Node.js 18)
-  docker build -t landing-builder .
-  docker create --name landing-container landing-builder
-  docker cp landing-container:/app/out ./out
-  docker rm landing-container
+
 
   echo "Deployment completed successfully"
 fi
