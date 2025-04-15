@@ -109,6 +109,22 @@ if [[ $client -eq 1 ]]; then
 
   # Despliegue Admin UI
   cd ../client/Admin || exit
+
+  echo "Configuring environment for Admin Client"
+  cat <<EoF >./src/environments/environment.prod.ts
+export const environment = {
+  production: true,
+  apiUrl: '$ADMIN_APIGATEWAYURL',
+};
+EoF
+
+  cat <<EoF >./src/environments/environment.ts
+export const environment = {
+  production: false,
+  apiUrl: '$ADMIN_APIGATEWAYURL',
+};
+EoF
+
   cat <<EoF >./src/aws-exports.ts
 const awsmobile = {
     "aws_project_region": "$REGION",
@@ -116,20 +132,26 @@ const awsmobile = {
     "aws_user_pools_id": "$ADMIN_USERPOOL_ID",
     "aws_user_pools_web_client_id": "$ADMIN_APPCLIENTID",
 };
+
 export default awsmobile;
 EoF
 
-  npm install --silent && npm run build --silent
+  npm install && npm run build
+
+  echo "aws s3 sync --delete --cache-control no-store dist s3://${ADMIN_SITE_BUCKET}"
   aws s3 sync --delete --cache-control no-store dist "s3://${ADMIN_SITE_BUCKET}"
 
   # Despliegue Landing UI (Next.js)
-  cd ../Landing || exit
+  cd ../
+  cd Landing || exit
+
+  echo "Configuring environment for Landing Client"
   cat <<EoF >.env.production
 NEXT_PUBLIC_API_GATEWAY_URL="$ADMIN_APIGATEWAYURL"
 NEXT_PUBLIC_AWS_REGION="$REGION"
 EoF
 
-  npm install --silent && npm run build --silent && npm run export
+  npm install && npm run build
   aws s3 sync --delete --cache-control no-store out "s3://${LANDING_APP_SITE_BUCKET}"
 
   echo "Deployment completed successfully"
