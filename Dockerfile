@@ -15,6 +15,3 @@ WORKDIR /app
 # Copiar el script y el código del Landing
 WORKDIR /app
 COPY . .
-
-# Dar permisos al script
-RUN chmod +x deployment.sh
