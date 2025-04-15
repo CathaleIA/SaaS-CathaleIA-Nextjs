@@ -151,7 +151,7 @@ NEXT_PUBLIC_API_GATEWAY_URL="$ADMIN_APIGATEWAYURL"
 NEXT_PUBLIC_AWS_REGION="$REGION"
 EoF
 
-  # Construir con Docker (Node.js 18)
+  rm -rf node_modules package-lock.json
   npm install --force
   npm install --save-dev @types/next  # <--- Nueva línea añadida
   npm run build
