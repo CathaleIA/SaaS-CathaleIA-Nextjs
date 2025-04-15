@@ -1,6 +1,6 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
-import { Inter, Poppins, Open_Sans, Montserrat } from "next/font/google";
+import { Poppins, Open_Sans, Montserrat } from "next/font/google";
 
 import "@/app/styles/globals.css";
 
@@ -9,7 +9,6 @@ import ClientNavBar from "@/components/navbar/ClientNavBar";
 import { LanguageProvider } from "@/context/LanguageContext";
 
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
   weight: ["400", "600", "700"],
   subsets: ["latin"],
@@ -37,7 +36,7 @@ export default async function RootLayout({
 
   return (
     <html lang="es">
-      <body className={`${montserrat.variable} ${poppins.variable} ${openSans.variable} font-[--font-inter]`}>
+      <body className={`${montserrat.variable} ${poppins.variable} ${openSans.variable}`}>
         <LanguageProvider>
           <ClientNavBar/>
           {children}
