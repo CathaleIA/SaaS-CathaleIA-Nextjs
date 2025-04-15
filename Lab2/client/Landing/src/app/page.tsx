@@ -152,7 +152,7 @@ export default function LandingPage() {
               <Tabs defaultValue="analytics" className="w-full">
                 <div className="flex justify-center mb-8 overflow-x-auto pb-2 -mx-4 px-4">
                   <TabsList className="flex-nowrap">
-                    {t.dashboard.tabs.map((tab, index) => (
+                    {t.dashboard.tabs.map((tab) => (
                       <TabsTrigger key={tab.value} value={tab.value} className="whitespace-nowrap">
                         {tab.title}
                       </TabsTrigger>
