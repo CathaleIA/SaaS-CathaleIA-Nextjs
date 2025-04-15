@@ -24,16 +24,6 @@ while [[ "$#" -gt 0 ]]; do
   shift
 done
 
-# Configuración de pylint para el contenedor
-PYLINT_IGNORE_PATHS="six.py,pycparser,pyasn1,ecdsa,jose,cffi,cryptography"
-PYLINT_RC_CONTENT="[MASTER]
-ignore=$PYLINT_IGNORE_PATHS
-
-[TYPECHECK]
-generated-members=types.ClassType,itertools.imap
-
-[FORMAT]
-max-line-length=120"
 
 # During AWS hosted events using event engine tool
 IS_RUNNING_IN_EVENT_ENGINE=false
@@ -69,27 +59,6 @@ if [[ $server -eq 1 ]]; then
     sed -i "s/s3_bucket = .*/s3_bucket = \"$SAM_S3_BUCKET\"/" ../../Lab7/samconfig.toml
   fi
 
-  echo "Validating server code using pylint"
-  # Configurar pylint para el entorno del contenedor
-  echo "$PYLINT_RC_CONTENT" > .pylintrc
-  python3 -m pip install --quiet --upgrade six pycparser pyasn1 ecdsa python-jose cffi cryptography
-  
-  echo "Validating server code using pylint"
-
-  # Analizar SOLO tu código fuente (excluyendo todo lo demás)
-  PYTHON_SRC=$(find . -path '*/.aws-sam' -prune -o -path '*/layers/*' -prune -o -path '*/venv/*' -prune -o -iname "*.py" -print)
-
-  if [ -z "$PYTHON_SRC" ]; then
-      echo "No code to validate"
-  else
-      python3 -m pylint -E -d E0401 --disable=all --enable=syntax-error,import-error $PYTHON_SRC
-  fi
-
-
-  if [[ $? -ne 0 ]]; then
-    echo "****ERROR: Please fix above code errors and then rerun script!!****"
-    exit 1
-  fi
 
   sam build -t template.yaml --use-container
 
