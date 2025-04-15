@@ -1,20 +1,30 @@
 # Usar la imagen oficial de Node.js 18
 FROM node:18
 
-# Instalar dependencias globales necesarias (awscli, git, etc.)
+# Instalar dependencias del sistema y AWS CLI
 RUN apt-get update && \
-    apt-get install -y curl git unzip && \
+    apt-get install -y \
+    curl \
+    git \
+    unzip && \
+    # Instalar AWS CLI
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \
     ./aws/install && \
-    rm -rf awscliv2.zip aws
+    # Limpiar
+    rm -rf awscliv2.zip aws /var/lib/apt/lists/*
 
-# Directorio de trabajo
+# Establecer directorio de trabajo
 WORKDIR /app
 
-# Copiar el script y el código del Landing
-WORKDIR /app
+# Copiar archivos necesarios
+COPY package*.json ./
+
+# Instalar dependencias del proyecto
+RUN npm install --force
+
+# Copiar el resto del código
 COPY . .
 
-# Usar bash como shell predeterminado
-CMD ["/bin/bash"]
+# Comando para ejecutar el proyecto (ajusta según tu caso)
+CMD ["npm", "run", "build"]
