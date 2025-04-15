@@ -6,8 +6,6 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet"
 import { FaAlignJustify  } from "react-icons/fa"
 
-import { useRouter } from "next/navigation";
-
 import { useTranslation } from "@/../hooks/useTranlation";
 
 
@@ -17,8 +15,6 @@ export default function MobileMenu() {
     const handleLinkClick = () => {
         setOpen(false)
     }
-
-    const router = useRouter();
 
     const t = useTranslation();
 
