@@ -1,20 +1,22 @@
-# Usar Node.js 18
 FROM node:18
 
-# Instalar dependencias del sistema
-RUN apt-get update && apt-get install -y curl git unzip
+# Instalar dependencias del sistema y AWS CLI
+RUN apt-get update && \
+    apt-get install -y curl git unzip python3 python3-pip && \
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install && \
+    rm -rf awscliv2.zip aws /var/lib/apt/lists/*
 
-# Directorio de trabajo
 WORKDIR /app
 
-# Copiar todo el código (incluyendo package.json)
-COPY . .
-
-# Instalar dependencias (sin --production para incluir devDependencies)
+COPY package*.json ./
 RUN npm install --force
 
-# Dar permisos al script de despliegue
+COPY . .
+
+# Dar permisos al script
 RUN chmod +x deployment.sh
 
-# Comando para ejecutar el script de despliegue
-CMD ["./deployment.sh"]
+# Comando para ejecutar el script
+CMD ["./deployment.sh", "-c", "--email", "eficiencia.desarrollo@copower.com.co"]
