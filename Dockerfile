@@ -72,5 +72,4 @@ COPY . .
 # 10. Permisos finales
 RUN sudo chown -R ec2-user:ec2-user /home/ec2-user/app
 
-# 11. Configurar PATH (automático con nvm)
 ENV PATH="/home/ec2-user/.nvm/versions/node/v16.20.2/bin:${PATH}"
