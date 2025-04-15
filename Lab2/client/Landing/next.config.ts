@@ -1,12 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  images: {
-    // Disable Next.js optimizations for images (it's not available for static sites
-    // and will throw an error)
-    unoptimized: true,
-  },
 
   // This tells Next.js to export a static build to the `out` folder
   output: "export",
