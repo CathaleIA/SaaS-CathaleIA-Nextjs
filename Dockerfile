@@ -17,12 +17,6 @@ RUN apt-get update && \
 # Establecer directorio de trabajo
 WORKDIR /app
 
-# Copiar archivos necesarios
-COPY package*.json ./
-
-# Instalar dependencias del proyecto
-RUN npm install --force
-
 # Copiar el resto del código
 COPY . .
 
