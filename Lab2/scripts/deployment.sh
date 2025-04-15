@@ -136,10 +136,10 @@ const awsmobile = {
 export default awsmobile;
 EoF
 
-  npm install && npm run build
+  # npm install && npm run build
 
-  echo "aws s3 sync --delete --cache-control no-store dist s3://${ADMIN_SITE_BUCKET}"
-  aws s3 sync --delete --cache-control no-store dist "s3://${ADMIN_SITE_BUCKET}"
+  # echo "aws s3 sync --delete --cache-control no-store dist s3://${ADMIN_SITE_BUCKET}"
+  # aws s3 sync --delete --cache-control no-store dist "s3://${ADMIN_SITE_BUCKET}"
 
   # Despliegue Landing UI (Next.js)
   cd ../
