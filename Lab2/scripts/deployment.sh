@@ -152,10 +152,8 @@ NEXT_PUBLIC_AWS_REGION="$REGION"
 EoF
 
   # Construir con Docker (Node.js 18)
-  docker build -t landing-builder .
-  docker create --name landing-container landing-builder
-  docker cp landing-container:/app/out ./out
-  docker rm landing-container
+  npm install && npm run build
+  aws s3 sync --delete --cache-control no-store out "s3://${LANDING_APP_SITE_BUCKET}"
 
   echo "Deployment completed successfully"
 fi
