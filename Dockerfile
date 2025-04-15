@@ -12,8 +12,10 @@ RUN yum update -y && \
     tar \
     gzip \
     findutils && \
-    yum clean all
-
+    yum clean all \
+    aws_lambda_powertools \
+    requests \
+    
 # 2. Configurar usuario
 RUN useradd -m -u 1000 -s /bin/bash ec2-user && \
     echo 'ec2-user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
