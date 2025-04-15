@@ -110,31 +110,31 @@ if [[ $client -eq 1 ]]; then
   # Despliegue Admin UI
   cd ../client/Admin || exit
 
-  echo "Configuring environment for Admin Client"
-  cat <<EoF >./src/environments/environment.prod.ts
-export const environment = {
-  production: true,
-  apiUrl: '$ADMIN_APIGATEWAYURL',
-};
-EoF
+#   echo "Configuring environment for Admin Client"
+#   cat <<EoF >./src/environments/environment.prod.ts
+# export const environment = {
+#   production: true,
+#   apiUrl: '$ADMIN_APIGATEWAYURL',
+# };
+# EoF
 
-  cat <<EoF >./src/environments/environment.ts
-export const environment = {
-  production: false,
-  apiUrl: '$ADMIN_APIGATEWAYURL',
-};
-EoF
+#   cat <<EoF >./src/environments/environment.ts
+# export const environment = {
+#   production: false,
+#   apiUrl: '$ADMIN_APIGATEWAYURL',
+# };
+# EoF
 
-  cat <<EoF >./src/aws-exports.ts
-const awsmobile = {
-    "aws_project_region": "$REGION",
-    "aws_cognito_region": "$REGION",
-    "aws_user_pools_id": "$ADMIN_USERPOOL_ID",
-    "aws_user_pools_web_client_id": "$ADMIN_APPCLIENTID",
-};
+#   cat <<EoF >./src/aws-exports.ts
+# const awsmobile = {
+#     "aws_project_region": "$REGION",
+#     "aws_cognito_region": "$REGION",
+#     "aws_user_pools_id": "$ADMIN_USERPOOL_ID",
+#     "aws_user_pools_web_client_id": "$ADMIN_APPCLIENTID",
+# };
 
-export default awsmobile;
-EoF
+# export default awsmobile;
+# EoF
 
   # npm install && npm run build
 
