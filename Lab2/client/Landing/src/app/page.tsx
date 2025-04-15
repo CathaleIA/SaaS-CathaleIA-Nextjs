@@ -36,14 +36,12 @@ export default function LandingPage() {
           {/* Video Background */}
           <div className="absolute inset-0 w-full h-full overflow-hidden">
             <div className="absolute inset-0 bg-black/50 z-10"></div>
-  
             {/* <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
               <source
                 src="/assets/hero_video.mp4" type="video/mp4"
               />
               Your browser does not support the video tag.
             </video> */}
-            
           </div>
           {/* Content */}
           <div className="container relative z-20 px-4 md:px-6 max-w-full overflow-hidden h-full flex items-center">
@@ -152,7 +150,7 @@ export default function LandingPage() {
               <Tabs defaultValue="analytics" className="w-full">
                 <div className="flex justify-center mb-8 overflow-x-auto pb-2 -mx-4 px-4">
                   <TabsList className="flex-nowrap">
-                    {t.dashboard.tabs.map((tab) => (
+                    {t.dashboard.tabs.map((tab, index) => (
                       <TabsTrigger key={tab.value} value={tab.value} className="whitespace-nowrap">
                         {tab.title}
                       </TabsTrigger>

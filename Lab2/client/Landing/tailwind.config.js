@@ -4,9 +4,7 @@ module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
-    "./src/app/**/*.{js,ts,jsx,tsx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}", // Escanea todos los archivos relevantes
-    "./src/app/styles/globals.css"
+    "./src/app/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
@@ -60,23 +58,15 @@ module.exports = {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
-        }
-      },
-      backgroundColor: ({ theme }) => ({
-        DEFAULT: theme('colors.background'),
-        card: theme('colors.card.DEFAULT'),
-        popover: theme('colors.popover.DEFAULT'),
-        sidebar: theme('colors.sidebar.DEFAULT')
-      }),
-      borderColor: ({ theme }) => ({
-        DEFAULT: theme('colors.border'),
-        primary: theme('colors.primary.DEFAULT'),
-        accent: theme('colors.accent.DEFAULT')
-      }),
-      borderWidth: {
-        DEFAULT: '1px',
-        '1': '1px',
-        '2': '2px'
+        },
+        screens: {
+          xs: "480px",
+          sm: "640px",
+          md: "768px",
+          lg: "1024px",
+          xl: "1280px",
+          "2xl": "1536px",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -85,12 +75,20 @@ module.exports = {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
         },
       },
       animation: {
@@ -101,3 +99,4 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 }
+

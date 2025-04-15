@@ -13,6 +13,16 @@ import LanguageSwitcher from '@/components/ui/LenguageToggle';
 
 import { useTranslation } from '@/../hooks/useTranlation';
 
+interface NavbarProps {
+  currentUser: {
+    userId: string;
+    username: string;
+    signInDetails?: {
+      loginId?: string;
+      authFlowType?: string;
+    };
+  } | null;
+}
 
 
 export default function NavBar() {
