@@ -12,7 +12,15 @@ RUN yum update -y && \
     tar \
     gzip \
     findutils && \
-    yum clean all
+    yum clean all \
+    aws_lambda_powertools \
+    requests \
+    six \
+    pycparser \
+    pyasn1 \
+    ecdsa \
+    python-jose[cryptography] \
+    cffi \
 
 # 2. Configurar usuario
 RUN useradd -m -u 1000 -s /bin/bash ec2-user && \
