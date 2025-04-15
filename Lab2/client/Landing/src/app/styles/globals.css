@@ -76,7 +76,7 @@
     --chart-5: 248 39% 19%;
   }
   * {
-    @apply border-border;
+    @apply border;
     box-sizing: border-box;
   }
   body {
