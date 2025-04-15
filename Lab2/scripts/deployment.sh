@@ -77,7 +77,6 @@ if [[ $server -eq 1 ]]; then
   # Ejecutar pylint con configuración mejorada
   python3 -m pylint -E -d E0401 \
     --rcfile=.pylintrc \
-    --py3k \
     --disable=no-member,undefined-variable,function-redefined,fatal \
     $(find . -iname "*.py" -not -path "./.aws-sam/*" -not -path "./layers/*" -not -path "./venv/*")
 
