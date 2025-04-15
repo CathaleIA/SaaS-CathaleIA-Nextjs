@@ -77,7 +77,7 @@ if [[ $server -eq 1 ]]; then
   echo "Validating server code using pylint"
 
   # Analizar SOLO tu código fuente (excluyendo todo lo demás)
-  PYTHON_SRC=$(find . -type d \( -path "./.aws-sam*" -o -path "./layers*" -o -name "venv" \) -prune -o -name "*.py" -print | grep -Ev "(pyasn1|cryptography|cffi|ecdsa|jose)")
+  PYTHON_SRC=$(find . -path '*/.aws-sam' -prune -o -path '*/layers/*' -prune -o -path '*/venv/*' -prune -o -iname "*.py" -print)
 
   if [ -z "$PYTHON_SRC" ]; then
       echo "No code to validate"
