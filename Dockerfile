@@ -39,9 +39,11 @@ RUN wget https://github.com/aws/aws-sam-cli/releases/download/v1.64.0/aws-sam-cl
     ./sam-installation/install && \
     rm -rf aws-sam-cli-linux-x86_64.zip sam-installation
 
-# 6. Instalar Node.js 18.x (usando repositorio oficial)
+# 6. Instalar Node.js 18.x (manualmente)
 USER root
-RUN amazon-linux-extras install -y nodejs18
+RUN curl -fsSL https://rpm.nodesource.com/setup_18.x | bash - && \
+    yum install -y nodejs && \
+    npm install -g npm@latest  # Asegurar la última versión de npm
 
 USER ec2-user
 
