@@ -1,6 +1,6 @@
 FROM public.ecr.aws/amazonlinux/amazonlinux:2
 
-# 1. Instalar herramientas base (CORREGIDO)
+# 1. Instalar herramientas base
 RUN yum update -y && \
     yum install -y \
     shadow-utils \
@@ -11,11 +11,11 @@ RUN yum update -y && \
     wget \
     tar \
     gzip \
-    findutils \
+    findutils && \
+    yum clean all \
     aws_lambda_powertools \
-    python38-requests && \
-    yum clean all
-
+    requests \
+    
 # 2. Configurar usuario
 RUN useradd -m -u 1000 -s /bin/bash ec2-user && \
     echo 'ec2-user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
@@ -39,19 +39,17 @@ RUN wget https://github.com/aws/aws-sam-cli/releases/download/v1.64.0/aws-sam-cl
     ./sam-installation/install && \
     rm -rf aws-sam-cli-linux-x86_64.zip sam-installation
 
-# 6. Instalar Node.js 16.x (versión LTS compatible con Amazon Linux 2)
+# 6. Node.js 14.18.1
 USER ec2-user
 ENV NVM_DIR /home/ec2-user/.nvm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash && \
-    echo "source $NVM_DIR/nvm.sh" >> ~/.bashrc && \
-    source $NVM_DIR/nvm.sh && \
-    nvm install v16.20.2 && \
-    nvm use v16.20.2 && \
-    nvm alias default v16.20.2
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash && \
+    . $NVM_DIR/nvm.sh && \
+    nvm install v14.18.1 && \
+    nvm use v14.18.1 && \
+    nvm alias default v14.18.1
 
-# 7. CDK 2.40.0 (usando Node.js 16)
-USER ec2-user
-RUN source $NVM_DIR/nvm.sh && \
+# 7. CDK 2.40.0
+RUN . $NVM_DIR/nvm.sh && \
     npm install -g aws-cdk@2.40.0
 
 # 8. Dependencias adicionales
@@ -67,9 +65,10 @@ USER ec2-user
 WORKDIR /home/ec2-user/app
 
 # Copiar estructura específica
+# 9. Configurar entorno
 COPY . .
 
 # 10. Permisos finales
 RUN sudo chown -R ec2-user:ec2-user /home/ec2-user/app
 
-ENV PATH="/home/ec2-user/.nvm/versions/node/v16.20.2/bin:${PATH}"
+ENV PATH="/home/ec2-user/.local/bin:/home/ec2-user/.nvm/versions/node/v14.18.1/bin:${PATH}"
