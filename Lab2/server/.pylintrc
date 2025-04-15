@@ -1,0 +1,8 @@
+[MASTER]
+ignore=six.py,pycparser,pyasn1,ecdsa,jose,cffi,cryptography
+
+[TYPECHECK]
+generated-members=types.ClassType,itertools.imap
+
+[FORMAT]
+max-line-length=120
