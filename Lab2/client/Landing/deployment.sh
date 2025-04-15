@@ -43,7 +43,7 @@ if [[ $server -eq 1 ]]; then
   cd ../server || exit
   REGION=$(aws configure get region || echo "us-east-1")
   DEFAULT_SAM_S3_BUCKET=$(grep s3_bucket samconfig.toml | cut -d'=' -f2 | cut -d \" -f2)
-  
+
   echo "Validating S3 bucket: $DEFAULT_SAM_S3_BUCKET"
   if ! aws s3 ls "s3://${DEFAULT_SAM_S3_BUCKET}"; then
     echo "Creating new S3 bucket..."
@@ -53,7 +53,7 @@ if [[ $server -eq 1 ]]; then
     aws s3api put-bucket-encryption \
       --bucket "$SAM_S3_BUCKET" \
       --server-side-encryption-configuration '{"Rules": [{"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "AES256"}}]}'
-    
+
     # Actualizar configuraciones SAM
     find ../../ -name "*-samconfig.toml" -exec sed -i "s/s3_bucket = .*/s3_bucket = \"$SAM_S3_BUCKET\"/" {} \;
     sed -i "s/s3_bucket = .*/s3_bucket = \"$SAM_S3_BUCKET\"/" ../../Lab7/samconfig.toml
@@ -108,7 +108,7 @@ if [[ $client -eq 1 ]]; then
     --group-name "$ADMIN_USER_GROUP_NAME"
 
   # Despliegue Admin UI
-  cd ../client/Admin || exit
+  # cd ../client/Admin || exit
 
 #   echo "Configuring environment for Admin Client"
 #   cat <<EoF >./src/environments/environment.prod.ts
@@ -142,8 +142,8 @@ if [[ $client -eq 1 ]]; then
   # aws s3 sync --delete --cache-control no-store dist "s3://${ADMIN_SITE_BUCKET}"
 
   # Despliegue Landing UI (Next.js)
-  cd ../
-  cd Landing || exit
+  # cd ../
+  # cd Landing || exit
 
   echo "Configuring environment for Landing Client"
   cat <<EoF >.env.production
