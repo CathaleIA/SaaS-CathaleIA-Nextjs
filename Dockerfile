@@ -15,3 +15,6 @@ WORKDIR /app
 # Copiar el script y el código del Landing
 WORKDIR /app
 COPY . .
+
+# Usar bash como shell predeterminado
+CMD ["/bin/bash"]
