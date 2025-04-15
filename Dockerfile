@@ -1,6 +1,6 @@
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023
+FROM public.ecr.aws/amazonlinux/amazonlinux:2
 
-# 1. Instalar herramientas base
+# 1. Instalar herramientas base (CORREGIDO)
 RUN yum update -y && \
     yum install -y \
     shadow-utils \
@@ -39,16 +39,20 @@ RUN wget https://github.com/aws/aws-sam-cli/releases/download/v1.64.0/aws-sam-cl
     ./sam-installation/install && \
     rm -rf aws-sam-cli-linux-x86_64.zip sam-installation
 
-# 6. Instalar Node.js 18.x (manualmente)
-USER root
-RUN curl -fsSL https://rpm.nodesource.com/setup_18.x | bash - && \
-    yum install -y nodejs && \
-    npm install -g npm@latest  # Asegurar la última versión de npm
-
+# 6. Instalar Node.js 16.x (versión LTS compatible con Amazon Linux 2)
 USER ec2-user
+ENV NVM_DIR /home/ec2-user/.nvm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash && \
+    echo "source $NVM_DIR/nvm.sh" >> ~/.bashrc && \
+    source $NVM_DIR/nvm.sh && \
+    nvm install v16.20.2 && \
+    nvm use v16.20.2 && \
+    nvm alias default v16.20.2
 
-# 7. CDK 2.40.0 (ahora usa Node.js 18)
-RUN npm install -g aws-cdk@2.40.0
+# 7. CDK 2.40.0 (usando Node.js 16)
+USER ec2-user
+RUN source $NVM_DIR/nvm.sh && \
+    npm install -g aws-cdk@2.40.0
 
 # 8. Dependencias adicionales
 USER root
@@ -67,3 +71,6 @@ COPY . .
 
 # 10. Permisos finales
 RUN sudo chown -R ec2-user:ec2-user /home/ec2-user/app
+
+# 11. Configurar PATH (automático con nvm)
+ENV PATH="/home/ec2-user/.nvm/versions/node/v16.20.2/bin:${PATH}"
