@@ -154,7 +154,8 @@ EoF
 # Instalar dependencias faltantes y construir
 rm -rf node_modules package-lock.json
 npm install --force
-npm install --save-dev @types/next tailwindcss postcss autoprefixer  # <-- Añade tailwindcss y autoprefixer
+
+npm install --save-dev @types/next @tailwindcss/postcss postcss autoprefixer  # <-- Añade tailwindcss y autoprefixer
 npm run build
 aws s3 sync --delete --cache-control no-store out "s3://${LANDING_APP_SITE_BUCKET}"
 
