@@ -151,8 +151,11 @@ NEXT_PUBLIC_API_GATEWAY_URL="$ADMIN_APIGATEWAYURL"
 NEXT_PUBLIC_AWS_REGION="$REGION"
 EoF
 
-  npm install && npm run build
-  aws s3 sync --delete --cache-control no-store out "s3://${LANDING_APP_SITE_BUCKET}"
+  # Construir con Docker (Node.js 18)
+  docker build -t landing-builder .
+  docker create --name landing-container landing-builder
+  docker cp landing-container:/app/out ./out
+  docker rm landing-container
 
   echo "Deployment completed successfully"
 fi
