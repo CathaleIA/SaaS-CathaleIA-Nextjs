@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+
 @layer base {
   :root {
     --background: 251 39% 11%;
@@ -40,7 +43,6 @@
 
     --radius: 0.5rem;
   }
-
   .dark {
     --background: 251 39% 8%;
     --foreground: 0 0% 98%;
@@ -76,20 +78,17 @@
     --chart-4: 196 42% 27%;
     --chart-5: 248 39% 19%;
   }
-
-  /* Estilos universales usando variables CSS */
   * {
-    border-color: hsl(var(--border));
+    @apply border-border;
     box-sizing: border-box;
   }
-
   body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
+    @apply bg-background text-foreground;
   }
 
-  /* Mantén tus estilos responsive */
-  html, body {
+  /* Prevent horizontal overflow */
+  html,
+  body {
     max-width: 100%;
     overflow-x: hidden;
     width: 100%;
@@ -97,11 +96,15 @@
     padding: 0;
   }
 
-  #__next, main, .container {
+  /* Fix for fractional pixel overflow */
+  #__next,
+  main,
+  .container {
     width: 100%;
     max-width: 100vw;
   }
 
+  /* Responsive container adjustments */
   .container {
     width: 100%;
     margin-left: auto;
@@ -110,9 +113,38 @@
     padding-right: 1rem;
   }
 
-  @media (min-width: 640px) { .container { max-width: 640px; } }
-  @media (min-width: 768px) { .container { max-width: 768px; } }
-  @media (min-width: 1024px) { .container { max-width: 1024px; } }
-  @media (min-width: 1280px) { .container { max-width: 1280px; } }
-  @media (min-width: 1536px) { .container { max-width: 1536px; } }
+  @media (min-width: 640px) {
+    .container {
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1536px;
+    }
+  }
 }
+
+
+
+
+

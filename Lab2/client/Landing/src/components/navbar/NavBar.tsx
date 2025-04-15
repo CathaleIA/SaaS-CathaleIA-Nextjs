@@ -13,8 +13,6 @@ import LanguageSwitcher from '@/components/ui/LenguageToggle';
 
 import { useTranslation } from '@/../hooks/useTranlation';
 
-
-
 export default function NavBar() {
 
   // console.log(currentUser)
