@@ -39,10 +39,41 @@ def create_tenant_admin_user(event, context):
     response = {"userPoolId": user_pool_id, "appClientId": app_client_id, "tenantAdminUserName": tenant_admin_user_name}
     return utils.create_success_response(response)
 
-#only tenant admin can create users
-#TODO: Implement the below method
 def create_user(event, context):
-    pass
+    user_details = json.loads(event['body'])
+
+    logger.info("Request received to create new user")
+    logger.info(event)    
+    
+    tenant_id = user_details['tenantId']
+    
+    response = client.admin_create_user(
+        Username=user_details['userName'],
+        UserPoolId=user_pool_id,
+        ForceAliasCreation=True,
+        UserAttributes=[
+            {
+                'Name': 'email',
+                'Value': user_details['userEmail']
+            },
+            {
+                'Name': 'custom:userRole',
+                'Value': user_details['userRole'] 
+            },            
+            {
+                'Name': 'custom:tenantId',
+                'Value': tenant_id
+            }
+        ]
+    )
+    
+    logger.info(response)
+    user_mgmt = UserManagement()
+    user_mgmt.add_user_to_group(user_pool_id, user_details['userName'], tenant_id)
+    response_mapping = user_mgmt.create_user_tenant_mapping(user_details['userName'], tenant_id)
+
+    logger.info("Request completed to create new user ")
+    return utils.create_success_response("New user created")
 
 def get_users(event, context):
     users = []  
