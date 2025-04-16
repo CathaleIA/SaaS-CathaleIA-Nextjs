@@ -12,7 +12,7 @@ RUN yum update -y && \
     tar \
     gzip \
     findutils && \
-    yum clean all \
+    yum clean all
     
 # 2. Configurar usuario
 #RUN useradd -m -u 1000 -s /bin/bash ec2-user && \
