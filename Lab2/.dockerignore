@@ -1,0 +1,29 @@
+# .dockerignore
+
+# Carpetas de dependencias
+node_modules/
+vendor/
+venv/
+
+# Logs y temporales
+*.log
+*.tmp
+temp/
+
+# Configuraciones sensibles
+.env
+*.key
+
+# Sistemas de control de versiones
+.git/
+.gitignore
+
+# Entornos de desarrollo
+.vscode/
+.idea/
+
+# Otros
+**/__pycache__
+**/*.md
+**/Dockerfile
+**/docker-compose.yml
