@@ -107,26 +107,26 @@ if [[ $client -eq 1 ]]; then
     --username admin-user \
     --group-name "$ADMIN_USER_GROUP_NAME"
 
-# Despliegue Admin UI
-cd ../client/Admin || exit
+  # Despliegue Admin UI
+  cd ../client/Admin || exit
 
-echo "Configuring environment for Admin Client"
-# ▶▶▶ Corrección: EoF sin indentación ◀◀◀
-cat <<EoF >./src/environments/environment.prod.ts
+  echo "Configuring environment for Admin Client"
+
+  cat <<EoF >./src/environments/environment.prod.ts
 export const environment = {
   production: true,
   apiUrl: '$ADMIN_APIGATEWAYURL',
 };
-EoF  # 👈 Sin espacios antes
+EoF
 
-cat <<EoF >./src/environments/environment.ts
+  cat <<EoF >./src/environments/environment.ts
 export const environment = {
   production: false,
   apiUrl: '$ADMIN_APIGATEWAYURL',
 };
-EoF  # 👈 Sin espacios antes
+EoF
 
-cat <<EoF >./src/aws-exports.ts
+  cat <<EoF >./src/aws-exports.ts
 const awsmobile = {
     "aws_project_region": "$REGION",
     "aws_cognito_region": "$REGION",
@@ -135,31 +135,31 @@ const awsmobile = {
 };
 
 export default awsmobile;
-EoF  # 👈 Sin espacios antes
+EoF
 
-   npm install && npm run build
+  npm install && npm run build
 
-   echo "aws s3 sync --delete --cache-control no-store dist s3://${ADMIN_SITE_BUCKET}"
-   aws s3 sync --delete --cache-control no-store dist "s3://${ADMIN_SITE_BUCKET}"
+  echo "aws s3 sync --delete --cache-control no-store dist s3://${ADMIN_SITE_BUCKET}"
+  aws s3 sync --delete --cache-control no-store dist "s3://${ADMIN_SITE_BUCKET}"
 
-  # Despliegue Landing UI (Next.js)
-#  cd ../
-#  cd Landing || exit
+    # Despliegue Landing UI (Next.js)
+  #  cd ../
+  #  cd Landing || exit
 
-#  echo "Configuring environment for Landing Client"
-#  cat <<EoF >.env.production
-# NEXT_PUBLIC_API_GATEWAY_URL="$ADMIN_APIGATEWAYURL"
-# NEXT_PUBLIC_AWS_REGION="$REGION"
-# EoF
+  #  echo "Configuring environment for Landing Client"
+  #  cat <<EoF >.env.production
+  # NEXT_PUBLIC_API_GATEWAY_URL="$ADMIN_APIGATEWAYURL"
+  # NEXT_PUBLIC_AWS_REGION="$REGION"
+  # EoF
 
-# Instalar dependencias faltantes y construir
-# npm install --force
+  # Instalar dependencias faltantes y construir
+  # npm install --force
 
-# npm install --save-dev @types/next postcss autoprefixer  # <-- Añade tailwindcss y autoprefixer
-# npm run build
-# aws s3 sync --delete --cache-control no-store out "s3://${LANDING_APP_SITE_BUCKET}"
+  # npm install --save-dev @types/next postcss autoprefixer  # <-- Añade tailwindcss y autoprefixer
+  # npm run build
+  # aws s3 sync --delete --cache-control no-store out "s3://${LANDING_APP_SITE_BUCKET}"
 
-  echo "Deployment completed successfully"
+  #echo "Deployment completed successfully"
 fi
 
 echo "Admin site URL: https://$ADMIN_SITE_URL"
