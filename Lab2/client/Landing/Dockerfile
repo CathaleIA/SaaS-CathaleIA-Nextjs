@@ -25,6 +25,12 @@ RUN cd /tmp && \
     # Limpiar archivos temporales
     rm -rf /tmp/Python-3.9*
 
+# 4. AWS CLI v2.3.0
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.3.0.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install --bin-dir /usr/local/bin && \
+    rm -rf awscliv2.zip aws
+
 WORKDIR /app
 
 COPY package*.json ./
