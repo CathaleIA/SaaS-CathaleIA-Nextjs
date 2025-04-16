@@ -1,15 +1,13 @@
 # Usar Amazon Linux 2023 como base
 FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 
-# 1. Instalar herramientas base (incluyendo Python 3.12 y Node.js 18)
+# 1. Instalar herramientas base (sin remover curl-minimal)
 RUN dnf update -y && \
-    dnf remove -y curl-minimal && \
     dnf install -y \
     shadow-utils \
     sudo \
     git \
     unzip \
-    curl \
     wget \
     tar \
     gzip \
@@ -26,6 +24,10 @@ RUN dnf update -y && \
     nodejs \
     npm \
     jq && \
+    dnf clean all
+
+# 2. Instalar curl completo sin conflictos
+RUN dnf install -y curl --allowerasing && \
     dnf clean all
 
 # 2. Configurar usuario (ec2-user con permisos)
