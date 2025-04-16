@@ -3,12 +3,13 @@ FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 
 # 1. Instalar herramientas base (incluyendo Python 3.12 y Node.js 18)
 RUN dnf update -y && \
+    dnf remove -y curl-minimal && \  # <--- Remover paquete conflictivo
     dnf install -y \
     shadow-utils \
     sudo \
     git \
     unzip \
-    curl \
+    curl \  # <--- Ahora se instalará la versión completa
     wget \
     tar \
     gzip \
