@@ -13,8 +13,6 @@ RUN yum update -y && \
     gzip \
     findutils && \
     yum clean all \
-    aws_lambda_powertools \
-    requests \
     
 # 2. Configurar usuario
 RUN useradd -m -u 1000 -s /bin/bash ec2-user && \
@@ -26,7 +24,11 @@ RUN amazon-linux-extras enable python3.9 && \
     alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1 && \
     alternatives --set python3 /usr/bin/python3.9 && \
     python3 -m pip install --upgrade pip setuptools wheel
-
+    
+RUN python3 -m pip install \
+    aws_lambda_powertools \
+    requests
+    
 # 4. AWS CLI v2.3.0
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.3.0.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \
