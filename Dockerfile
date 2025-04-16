@@ -15,8 +15,8 @@ RUN yum update -y && \
     yum clean all \
     
 # 2. Configurar usuario
-RUN useradd -m -u 1000 -s /bin/bash ec2-user && \
-    echo 'ec2-user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+#RUN useradd -m -u 1000 -s /bin/bash ec2-user && \
+#    echo 'ec2-user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # 3. Instalar Python 3.9 (en lugar de 3.8)
 RUN amazon-linux-extras enable python3.9 && \
