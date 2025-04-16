@@ -45,10 +45,10 @@ export default function NavBar() {
                 alt='ctahlkesd'
                 width={20}
                 height={20}
-                style={{
-                  width: '100%', // Ocupa el 100% del contenedor
-                  height: 'auto', // Mantiene la relación de aspecto
-                }}
+                // style={{
+                //   width: '100%', // Ocupa el 100% del contenedor
+                //   height: 'auto', // Mantiene la relación de aspecto
+                // }}
               />
               <span className='text-xl font-bold'>CATHALE<span className='text-slate-400'>IA</span></span>
             </div>
