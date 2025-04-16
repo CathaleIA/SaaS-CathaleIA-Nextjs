@@ -1,18 +1,29 @@
 FROM node:18
 
-# Instalar dependencias del sistema y AWS CLI
+# 1. Instalar dependencias del sistema y compilación de Python
 RUN apt-get update && \
-    # Instalar Python 3.9 y pip para 3.9
-    apt-get install -y curl git unzip python3.9 python3.9-pip && \
-    # Configurar python3 y pip3 para usar 3.9
-    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1 && \
-    update-alternatives --set python3 /usr/bin/python3.9 && \
-    ln -sf /usr/bin/pip3 /usr/local/bin/pip3 && \
-    # Instalar AWS CLI
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
-    unzip awscliv2.zip && \
-    ./aws/install && \
-    rm -rf awscliv2.zip aws /var/lib/apt/lists/*
+    apt-get install -y \
+    curl git unzip \
+    build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev \
+    libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget && \
+    # Limpiar caché de apt
+    rm -rf /var/lib/apt/lists/*
+
+# 2. Compilar e instalar Python 3.9 manualmente
+RUN cd /tmp && \
+    wget https://www.python.org/ftp/python/3.9.18/Python-3.9.18.tgz && \
+    tar -xzf Python-3.9.18.tgz && \
+    cd Python-3.9.18 && \
+    ./configure --enable-optimizations --with-openssl=/usr && \
+    make altinstall && \
+    # Crear enlaces simbólicos
+    ln -sf /usr/local/bin/python3.9 /usr/local/bin/python3 && \
+    ln -sf /usr/local/bin/pip3.9 /usr/local/bin/pip3 && \
+    # Configurar alternativas
+    update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.9 1 && \
+    update-alternatives --set python3 /usr/local/bin/python3.9 && \
+    # Limpiar archivos temporales
+    rm -rf /tmp/Python-3.9*
 
 WORKDIR /app
 
