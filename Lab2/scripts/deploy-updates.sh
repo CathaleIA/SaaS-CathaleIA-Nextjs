@@ -14,6 +14,10 @@ sam build -t template.yaml
 #Deploying shared services changes
 echo "Deploying shared services changes" 
 # echo Y | sam deploy --stack-name serverless-saas --code --resource-id LambdaFunctions/CreateUserFunction --resource-id LambdaFunctions/RegisterTenantFunction --resource-id LambdaFunctions/GetTenantFunction -u
+echo Y | sam deploy \
+    --stack-name serverless-saas \
+    --capabilities CAPABILITY_IAM \
+    --region us-east-1
 
 
 cd ../scripts || exit
