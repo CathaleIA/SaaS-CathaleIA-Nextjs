@@ -9,7 +9,7 @@ rm -rf .aws-sam/
 #   fi
 #Deploying shared services changes
 echo "Deploying shared services changes" 
-echo Y | sam sync --stack-name serverless-saas --code --resource-id LambdaFunctions/CreateUserFunction --resource-id LambdaFunctions/RegisterTenantFunction --resource-id LambdaFunctions/GetTenantFunction -u
+echo Y | sam deploy --stack-name serverless-saas --code --resource-id LambdaFunctions/CreateUserFunction --resource-id LambdaFunctions/RegisterTenantFunction --resource-id LambdaFunctions/GetTenantFunction -u
 
 cd ../scripts || exit
 ./geturl.sh
