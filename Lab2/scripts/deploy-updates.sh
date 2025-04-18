@@ -16,7 +16,7 @@ echo "Deploying shared services changes"
 # echo Y | sam deploy --stack-name serverless-saas --code --resource-id LambdaFunctions/CreateUserFunction --resource-id LambdaFunctions/RegisterTenantFunction --resource-id LambdaFunctions/GetTenantFunction -u
 echo Y | sam deploy \
     --stack-name serverless-saas \
-    --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND \
+    --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
     --region us-east-1
 
 
