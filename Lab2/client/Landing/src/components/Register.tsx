@@ -180,7 +180,7 @@ export default function Register() {
                     transition: { 
                         onExited: () => {
                             if (snackbar.severity === 'success') {
-                                window.location.href = "https://tu-pagina-externa.com";
+                                window.location.href = "http://d1u5q2kphi93bz.cloudfront.net/";
                             }
                         }
                     }
