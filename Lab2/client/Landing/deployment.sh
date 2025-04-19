@@ -151,7 +151,11 @@ NEXT_PUBLIC_API_GATEWAY_URL="$ADMIN_APIGATEWAYURL"
 NEXT_PUBLIC_AWS_REGION="$REGION"
 EoF
 
-# Instalar dependencias faltantes y construir
+# Limpiar caches y builds anteriores
+rm -rf .next/ node_modules/ out/
+
+# Instalar dependencias limpiando cache
+npm cache clean --force
 npm install --force
 
 npm install --save-dev @types/next postcss autoprefixer  # <-- Añade tailwindcss y autoprefixer
