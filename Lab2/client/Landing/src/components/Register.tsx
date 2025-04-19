@@ -1,6 +1,7 @@
 // components/Register.tsx
 'use client'
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm, SubmitHandler, Controller} from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -33,6 +34,9 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export default function Register() {
+
+    const router = useRouter();
+
     const [submitting, setSubmitting] = useState(false);
     const [snackbar, setSnackbar] = useState<{
         open: boolean;
@@ -161,7 +165,7 @@ export default function Register() {
                         >
                             {submitting ? <CircularProgress size={24} /> : 'Submit'}
                         </Button>
-                        <Button variant="outlined" color="error" href="/landing">
+                        <Button variant="outlined" color="error" onClick={() => router.push('/')}>
                             Cancel
                         </Button>
                     </div>
@@ -170,8 +174,21 @@ export default function Register() {
 
             <Snackbar
                 open={snackbar.open}
-                autoHideDuration={4000}
+                autoHideDuration={1500}
                 onClose={handleCloseSnackbar}
+                slotProps={{
+                    transition: { 
+                        onExited: () => {
+                            if (snackbar.severity === 'success') {
+                                window.location.href = "https://tu-pagina-externa.com";
+                            }
+                        }
+                    }
+                }}
+                anchorOrigin={{ // Posicionamiento del mensaje
+                    vertical: 'top', 
+                    horizontal: 'center'
+                }}
             >
                 <Alert
                     onClose={handleCloseSnackbar}
